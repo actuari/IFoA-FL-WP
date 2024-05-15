@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>claims_frequency_FL_client module &mdash; FL for motor insurance use case 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="prepare_dataset module" href="prepare_dataset.html" />
+    <link rel="prev" title="architecture module" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FL for motor insurance use case
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="IFoA_server.html">IFoA_server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InsurSecAgg.html">InsurSecAgg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">architecture module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">claims_frequency_FL_client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient"><code class="docutils literal notranslate"><span class="pre">ClaimsFrequencyFLClient</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.evaluate"><code class="docutils literal notranslate"><span class="pre">ClaimsFrequencyFLClient.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.fit"><code class="docutils literal notranslate"><span class="pre">ClaimsFrequencyFLClient.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.get_parameters"><code class="docutils literal notranslate"><span class="pre">ClaimsFrequencyFLClient.get_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.set_parameters"><code class="docutils literal notranslate"><span class="pre">ClaimsFrequencyFLClient.set_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.initialize_model"><code class="docutils literal notranslate"><span class="pre">initialize_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.test"><code class="docutils literal notranslate"><span class="pre">test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#claims_frequency_FL_client.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_dataset.html">prepare_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quanitsation_example.html">quanitsation_example module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skorch_tuning.html">skorch_tuning module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smpc_utils.html">smpc_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_quantisation.html">utils_quantisation module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FL for motor insurance use case</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">code</a></li>
+      <li class="breadcrumb-item active">claims_frequency_FL_client module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/claims_frequency_FL_client.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-claims_frequency_FL_client">
+<span id="claims-frequency-fl-client-module"></span><h1>claims_frequency_FL_client module<a class="headerlink" href="#module-claims_frequency_FL_client" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.ClaimsFrequencyFLClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">ClaimsFrequencyFLClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NumPyClient</span></code></p>
+<p>A client class for federated learning using Flower framework, designed to handle the training and evaluation 
+of a machine learning model on local data and interact with a federated learning server.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><ul class="simple">
+<li><p>model (torch.nn.Module): The local machine learning model.</p></li>
+<li><p>optimizer (torch.optim.Optimizer): The optimizer used for training the model.</p></li>
+<li><p>criterion (torch.nn.Module): The loss function used for model training.</p></li>
+<li><p>trainset (torch.utils.data.Dataset): The training dataset.</p></li>
+<li><p>valset (torch.utils.data.Dataset): The validation dataset.</p></li>
+<li><p>testset (torch.utils.data.Dataset): The test dataset.</p></li>
+<li><p>num_examples (Dict): A dictionary containing the number of examples.</p></li>
+<li><p>exposure (float): A parameter used to weight the parameter updates.</p></li>
+<li><p>noise (List): A list of noise values added to model parameters for secure aggregation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.ClaimsFrequencyFLClient.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.evaluate" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluates the model with the provided global parameters on local test data.</p>
+<p>This method is intended to be used in a federated learning context where global model parameters are evaluated
+on a client’s local test dataset. The method sets the model’s parameters to the provided global parameters, evaluates
+these parameters on the local test dataset, and returns the evaluation loss, the number of test samples, and a dictionary
+containing evaluation metrics such as accuracy.</p>
+<dl>
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>parameters<span class="classifier">List[np.ndarray]</span></dt><dd><p>A list of NumPy ndarrays representing the global model parameters to be evaluated.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>config<span class="classifier">Dict[str, str]</span></dt><dd><p>A dictionary containing configuration options for the evaluation process. This could include model-specific settings or evaluation hyperparameters. Note: Currently, this parameter is not directly used in the method but is included for consistency and future extensions.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>Tuple[float, int, Dict]</dt><dd><dl class="simple">
+<dt>A tuple containing three elements:</dt><dd><ul class="simple">
+<li><p>The evaluation loss as a float.</p></li>
+<li><p>The number of samples in the test dataset as an int.</p></li>
+<li><p>A dictionary containing evaluation metrics, with at least an “accuracy” key providing the accuracy of the model on the test dataset calculated as the loss divided by the number of test loader batches.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client_evaluator</span> <span class="o">=</span> <span class="n">ModelEvaluator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">testset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">global_params</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>  <span class="c1"># Global parameters obtained from the server</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">client_evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">global_params</span><span class="p">,</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">, Test Accuracy: </span><span class="si">{</span><span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>The method utilizes a DataLoader to iterate through the test dataset, and the batch size for the DataLoader is determined by the global BATCH_SIZE variable.</p></li>
+<li><p>The accuracy calculation in the returned dictionary is a simplified example. Depending on the model and the task, you might need a more sophisticated method to calculate accuracy or other relevant metrics.</p></li>
+<li><p>Ensure that the global <cite>BATCH_SIZE</cite> variable is appropriately set for the evaluation DataLoader to function correctly.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.ClaimsFrequencyFLClient.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the model locally using provided parameters and configuration settings.</p>
+<p>This method sets the initial model parameters, trains the model on a local dataset,
+and returns the updated model parameters after training. It encapsulates the process of
+local training within a federated learning framework, including setting initial parameters,
+executing the training loop, and optionally evaluating the model on a validation set.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>parameters<span class="classifier">List[np.ndarray]</span></dt><dd><p>A list of NumPy ndarrays representing the model parameters to be set before training begins.
+These parameters might come from a central server in a federated learning setup.</p>
+</dd>
+<dt>config<span class="classifier">Dict[str, str]</span></dt><dd><p>A dictionary containing configuration options for the training process. This may include
+hyperparameters such as learning rate, batch size, or any other model-specific settings.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>Tuple[List[np.ndarray], int, Dict]</dt><dd><dl class="simple">
+<dt>A tuple containing three elements:</dt><dd><ul class="simple">
+<li><p>A list of NumPy ndarrays representing the updated model parameters after training.</p></li>
+<li><p>An integer representing the number of training samples used in the training process. This could be used for weighted averaging in a federated learning setup.</p></li>
+<li><p>A dictionary containing additional information about the training process. For example, it could include metrics such as training loss or accuracy, or model-specific metrics like ‘exposure’ in this case.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model_trainer</span> <span class="o">=</span> <span class="n">ModelTrainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">trainset</span><span class="p">,</span> <span class="n">valset</span><span class="p">,</span> <span class="n">testset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">updated_params</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="n">model_trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">initial_params</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+<span class="go">{&#39;exposure&#39;: ...}</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>The training process uses the DataLoader from PyTorch to load the training and validation datasets with the specified batch size. It’s important to ensure that the datasets are properly initialized and passed to the ModelTrainer before calling <cite>fit</cite>.</p></li>
+<li><p>The configuration dictionary must include all necessary settings required by the training and evaluation process. Missing configurations might result in default values being used or in runtime errors.</p></li>
+<li><p>The method internally calls <cite>set_parameters</cite> to set the model’s initial parameters and <cite>get_parameters</cite> to retrieve the updated parameters after training. Ensure that these methods are implemented correctly for the <cite>fit</cite> method to work as expected.</p></li>
+<li><p>This method appends the training statistics to an internal list <cite>self.stats</cite> after each training session, allowing for tracking of performance over multiple rounds of federated learning.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.ClaimsFrequencyFLClient.get_parameters">
+<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.get_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves local model parameters, with optional quantization and noise addition based on configuration flags.</p>
+<p>This method extracts the model’s parameters as numpy arrays. If the QUANTISATION flag is set in the provided
+configuration, the parameters are quantized. Similarly, if the SMPC_NOISE flag is set, noise is added to the
+parameters. This is part of preparing the model’s parameters for secure multi-party computation (SMPC) or
+other privacy-preserving mechanisms.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>config<span class="classifier">dict  </span></dt><dd><p>A configuration dictionary that may contain flags like QUANTISATION and SMPC_NOISE to indicate whether quantization or noise addition should be applied to the model parameters.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>List[np.ndarray]</dt><dd><p>A list of numpy arrays representing the model’s parameters after applying quantization and/or noise addition as specified in the configuration. Each numpy array in the list corresponds to parameters of a different layer or component of the model.</p>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">YourModelClass</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;QUANTISATION&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;SMPC_NOISE&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">&lt;class &#39;numpy.ndarray&#39;&gt;</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>QUANTISATION and SMPC_NOISE are flags handling quantization and noise addition.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.ClaimsFrequencyFLClient.set_parameters">
+<span class="sig-name descname"><span class="pre">set_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#claims_frequency_FL_client.ClaimsFrequencyFLClient.set_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the model’s parameters with new values provided as a list of NumPy ndarrays.</p>
+<p>This method takes a list of NumPy arrays containing new parameter values and updates the model’s
+parameters accordingly. It’s typically used to set model parameters after they have been modified
+or updated elsewhere, possibly after aggregation in a federated learning scenario or after receiving
+updates from an optimization process.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>parameters<span class="classifier">List[np.ndarray]</span></dt><dd><p>A list of NumPy ndarrays where each array corresponds to the parameters for a different layer or
+component of the model. The order of the arrays in the list should match the order of parameters
+in the model’s state_dict.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">YourModelClass</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">set_parameters</span><span class="p">(</span><span class="n">new_parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Model parameters are now updated with `new_parameters`.</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>This method assumes that the provided list of parameters matches the structure and order of the model’s parameters. If the order or structure of <cite>parameters</cite> does not match, this may lead to incorrect assignment of parameters or runtime errors.</p></li>
+<li><p>The method converts each NumPy ndarray to a PyTorch tensor before updating the model’s state dict. Ensure that the data types and device (CPU/GPU) of the NumPy arrays are compatible with your model’s requirements.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.initialize_model">
+<span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">initialize_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#claims_frequency_FL_client.initialize_model" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes the model, optimizer, and loss criterion.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.main">
+<span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#claims_frequency_FL_client.main" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.parse_args">
+<span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#claims_frequency_FL_client.parse_args" title="Permalink to this definition"></a></dt>
+<dd><p>Parses command-line arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.test">
+<span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#claims_frequency_FL_client.test" title="Permalink to this definition"></a></dt>
+<dd><p>Evaluates the performance of the model on a validation dataset.</p>
+<p>This function iterates over the provided validation DataLoader, computes the loss of the model predictions
+against the true labels using the provided loss criterion, and sums up the loss over all validation batches
+to get the total validation loss. The model is set to evaluation mode during this process to disable dropout
+or batch normalization layers that behave differently during training.</p>
+<section id="parameters">
+<h2>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>model<span class="classifier">torch.nn.Module</span></dt><dd><p>The neural network model to be evaluated. It should already be trained or loaded with pre-trained weights.</p>
+</dd>
+<dt>criterion<span class="classifier">torch.nn.Module</span></dt><dd><p>The loss function used to calculate the loss between the model predictions and the true labels.</p>
+</dd>
+<dt>val_loader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>A DataLoader providing batches of validation data including features and labels.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>float</dt><dd><p>The total loss computed over all batches of the validation dataset.</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h2>Example:<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">MyCustomModel</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val_dataset</span> <span class="o">=</span> <span class="n">CustomDataset</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total_val_loss</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total Validation Loss: </span><span class="si">{</span><span class="n">total_val_loss</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="notes">
+<h2>Notes:<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>The function automatically moves the input and target data to the same device as the model before making predictions.
+Ensure that the model and criterion are already moved to the appropriate device (CPU or GPU) before calling this function.</p></li>
+<li><p>The function uses <cite>torch.no_grad()</cite> context manager to disable gradient computation during evaluation, improving memory
+efficiency and speed.</p></li>
+<li><p>It’s important to call <cite>model.eval()</cite> before evaluating the model to set the model to evaluation mode. This is necessary
+for models that have layers like dropout or batch normalization that behave differently during training and evaluation.</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="claims_frequency_FL_client.train">
+<span class="sig-prename descclassname"><span class="pre">claims_frequency_FL_client.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataLoader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#claims_frequency_FL_client.train" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the given model using the specified training and validation data loaders, optimizer, and loss function
+across a defined number of epochs. Evaluates the model on the validation dataset after each training epoch and
+reports the training and validation losses.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>model<span class="classifier">torch.nn.Module</span></dt><dd><p>The neural network model to be trained.</p>
+</dd>
+<dt>optimizer<span class="classifier">torch.optim.Optimizer</span></dt><dd><p>The optimizer used for adjusting the model parameters based on the computed gradients.</p>
+</dd>
+<dt>criterion<span class="classifier">torch.nn.Module</span></dt><dd><p>The loss function used to evaluate the goodness of the model’s predictions.</p>
+</dd>
+<dt>train_loader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>DataLoader for the training data, providing batches of data.</p>
+</dd>
+<dt>val_loader<span class="classifier">torch.utils.data.DataLoader</span></dt><dd><p>DataLoader for the validation data, used to assess the model’s performance.</p>
+</dd>
+<dt>epochs<span class="classifier">int, optional</span></dt><dd><p>The number of complete passes through the training dataset. Defaults to the global variable <cite>EPOCHS</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>Tuple[torch.nn.Module, Dict[str, List[float]]]</dt><dd><p>A tuple containing:
+- The trained model.
+- A dictionary with keys ‘train’ and ‘val’, each mapping to a list of loss values recorded at the end of each epoch.</p>
+</dd>
+</dl>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">MyCustomModel</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trained_model</span><span class="p">,</span> <span class="n">loss_stats</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loss_stats</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loss_stats</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>This function assumes that the <cite>model</cite>, <cite>optimizer</cite>, <cite>criterion</cite>, and data loaders have been initialized</p></li>
+</ul>
+<p>before being passed as arguments.
+- The function sets the model in training mode (<cite>model.train()</cite>) at the beginning of each epoch and uses the optimizer
+to update model parameters based on the computed gradients.
+- Losses for both training and validation phases are accumulated over each epoch and reported at the end.
+- It’s important to ensure that the device (<cite>cpu</cite> or <cite>cuda</cite>) is correctly configured for the model, data, and criterion
+before calling this function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="architecture module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prepare_dataset.html" class="btn btn-neutral float-right" title="prepare_dataset module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, IFoA FL WP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+InsurSecAgg module
+==================
+
+.. automodule:: InsurSecAgg
+   :members:
+   :undoc-members:
+   :show-inheritance:

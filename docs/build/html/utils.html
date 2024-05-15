@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils module &mdash; FL for motor insurance use case 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils_quantisation module" href="utils_quantisation.html" />
+    <link rel="prev" title="skorch_tuning module" href="skorch_tuning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FL for motor insurance use case
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">architecture module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_client.html">insur_FL_client module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_server.html">insur_FL_server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_maskedAgg.html">insur_maskedAgg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_dataset.html">prepare_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skorch_tuning.html">skorch_tuning module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utils.create_df_sum"><code class="docutils literal notranslate"><span class="pre">create_df_sum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.create_df_test_pred"><code class="docutils literal notranslate"><span class="pre">create_df_test_pred()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.create_test_data"><code class="docutils literal notranslate"><span class="pre">create_test_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.double_lift_rebase"><code class="docutils literal notranslate"><span class="pre">double_lift_rebase()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.encode_and_scale_dataframe"><code class="docutils literal notranslate"><span class="pre">encode_and_scale_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.frequency_conversion"><code class="docutils literal notranslate"><span class="pre">frequency_conversion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.hyperparameter_counts"><code class="docutils literal notranslate"><span class="pre">hyperparameter_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.load_individual_data"><code class="docutils literal notranslate"><span class="pre">load_individual_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.load_individual_skorch_data"><code class="docutils literal notranslate"><span class="pre">load_individual_skorch_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.load_model"><code class="docutils literal notranslate"><span class="pre">load_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.lorenz_curve"><code class="docutils literal notranslate"><span class="pre">lorenz_curve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.one_way_graph_comparison"><code class="docutils literal notranslate"><span class="pre">one_way_graph_comparison()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.preprocess_dataframe"><code class="docutils literal notranslate"><span class="pre">preprocess_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.row_check"><code class="docutils literal notranslate"><span class="pre">row_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.seed_torch"><code class="docutils literal notranslate"><span class="pre">seed_torch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.split_data"><code class="docutils literal notranslate"><span class="pre">split_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.training_loss_curve"><code class="docutils literal notranslate"><span class="pre">training_loss_curve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.undummify"><code class="docutils literal notranslate"><span class="pre">undummify()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.uniform_partitions"><code class="docutils literal notranslate"><span class="pre">uniform_partitions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils.upload_dataset"><code class="docutils literal notranslate"><span class="pre">upload_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils_quantisation.html">utils_quantisation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_smpc.html">utils_smpc module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FL for motor insurance use case</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">code</a></li>
+      <li class="breadcrumb-item active">utils module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-utils">
+<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-utils" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.create_df_sum">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">create_df_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_test_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NUM_AGENTS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.create_df_sum" title="Permalink to this definition"></a></dt>
+<dd><p>Create a summary DataFrame aggregating predictions by binned factors.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df_test_pred<span class="classifier">pandas.DataFrame</span></dt><dd><p>The DataFrame with test predictions.</p>
+</dd>
+<dt>factor<span class="classifier">str </span></dt><dd><p>The factor for binning.</p>
+</dd>
+<dt>NUM_AGENTS<span class="classifier">int </span></dt><dd><p>The number of agents.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>df_sum<span class="classifier">pandas.DataFrame </span></dt><dd><p>The summary DataFrame aggregated by binned factors.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.create_df_test_pred">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">create_df_test_pred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NUM_AGENTS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fl_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_model_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.create_df_test_pred" title="Permalink to this definition"></a></dt>
+<dd><p>Generate predictions for the test dataset using various models.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df_test<span class="classifier">pandas.DataFrame</span></dt><dd><p>The test dataset.</p>
+</dd>
+<dt>X_test<span class="classifier">numpy.ndarray</span></dt><dd><p>The features of the test dataset.</p>
+</dd>
+<dt>NUM_AGENTS<span class="classifier">int</span></dt><dd><p>The number of agents.</p>
+</dd>
+<dt>global_model </dt><dd><p>The global model for prediction.</p>
+</dd>
+<dt>fl_model </dt><dd><p>The federated learning model for prediction.</p>
+</dd>
+<dt>agent_model_dictionary<span class="classifier">dict</span></dt><dd><p>A dictionary containing agent models.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>df_test<span class="classifier">pandas.DataFrame </span></dt><dd><p>The test dataset with predictions appended.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.create_test_data">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">create_test_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.create_test_data" title="Permalink to this definition"></a></dt>
+<dd><p>Create test data for evaluation.</p>
+<p>This function loads test data, undummifies categorical variables,
+applies scaling to certain features, bins numerical factors, and returns
+processed test datasets for evaluation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>X_test<span class="classifier">pandas.DataFrame</span></dt><dd><p>Test features dataset.</p>
+</dd>
+<dt>y_test<span class="classifier">pandas.DataFrame</span></dt><dd><p>Test labels dataset.</p>
+</dd>
+<dt>df_test<span class="classifier">pandas.DataFrame</span></dt><dd><p>Processed test dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.double_lift_rebase">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">double_lift_rebase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_test_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.double_lift_rebase" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a double lift chart comparing the performance of two models.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df_test_pred<span class="classifier">pandas.DataFrame</span></dt><dd><p>The DataFrame with test predictions.</p>
+</dd>
+<dt>model1<span class="classifier">str</span></dt><dd><p>The name of the first model.</p>
+</dd>
+<dt>model2<span class="classifier">str </span></dt><dd><p>The name of the second model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Returns:
+- None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.encode_and_scale_dataframe">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">encode_and_scale_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.encode_and_scale_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Encodes categorical variables and scales numerical features within the DataFrame.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df<span class="classifier">DataFrame </span></dt><dd><p>The DataFrame to encode and scale.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>DataFrame </dt><dd><p>The encoded and scaled DataFrame.</p>
+</dd>
+<dt>MinMaxScaler </dt><dd><p>The scaler used for numerical feature scaling.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Usage:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">df_encoded,</span> <span class="pre">scaler</span> <span class="pre">=</span> <span class="pre">encode_and_scale_dataframe(df_preprocessed)</span>
+<span class="pre">`</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.frequency_conversion">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">frequency_conversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FACTOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.frequency_conversion" title="Permalink to this definition"></a></dt>
+<dd><p>Perform frequency conversion on a DataFrame.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>FACTOR<span class="classifier">str </span></dt><dd><p>The factor to be converted.</p>
+</dd>
+<dt>df<span class="classifier">pandas.DataFrame </span></dt><dd><p>The DataFrame containing the data.</p>
+</dd>
+<dt>freq_dictionary<span class="classifier">dict </span></dt><dd><p>A dictionary mapping factor keys to frequency keys.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>df<span class="classifier">pandas.DataFrame </span></dt><dd><p>The DataFrame with frequency conversion applied.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.hyperparameter_counts">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">hyperparameter_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hyperparameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.hyperparameter_counts" title="Permalink to this definition"></a></dt>
+<dd><p>Plots and saves a bar chart of the value counts for a specified hyperparameter in a given DataFrame.</p>
+<p>This function visualizes the distribution of values for a selected hyperparameter within a dataset, 
+highlighting the frequency of each unique value. The resulting bar chart is saved to a file.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>dataframe<span class="classifier">pandas.DataFrame</span></dt><dd><p>The DataFrame containing the data from which to count the hyperparameter values.</p>
+</dd>
+<dt>hyperparameter<span class="classifier">str</span></dt><dd><p>The name of the column in <cite>dataframe</cite> representing the hyperparameter whose distribution is to be plotted.</p>
+</dd>
+<dt>x_label<span class="classifier">str</span></dt><dd><p>The label for the x-axis of the plot, typically the name of the hyperparameter.</p>
+</dd>
+<dt>title<span class="classifier">str</span></dt><dd><p>The title of the plot, describing what the plot shows.</p>
+</dd>
+<dt>name<span class="classifier">str</span></dt><dd><p>The filename under which the plot will be saved. The plot is saved in the ‘../results/’ directory.
+The ‘.png’ extension is recommended to be included in the <cite>name</cite> for clarity.</p>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;model_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperparameter_counts</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;model_depth&#39;</span><span class="p">,</span> <span class="s1">&#39;Model Depth&#39;</span><span class="p">,</span> <span class="s1">&#39;Distribution of Model Depths&#39;</span><span class="p">,</span> <span class="s1">&#39;model_depth_distribution.png&#39;</span><span class="p">)</span>
+<span class="go"># This will create and save a bar chart visualizing the frequency of different model depths in the dataset.</span>
+</pre></div>
+</div>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>The plot is saved with a white background to ensure readability when viewed on various devices.</p></li>
+<li><p>Ensure the ‘../results/’ directory exists before calling this function, or adjust the save path accordingly.</p></li>
+<li><p>The function does not return any value. It directly saves the generated plot to a file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.load_individual_data">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">load_individual_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_val_in_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.load_individual_data" title="Permalink to this definition"></a></dt>
+<dd><p>Loads individual or global datasets as PyTorch TensorDatasets, with an option to include validation data in the training set.</p>
+<p>This function dynamically loads training, validation, and test data from CSV files located in a specified directory.
+It can load data for a specific agent by ID or global data if the agent ID is set to -1. There is an option to merge
+training and validation datasets for scenarios where validation data should be included in training, e.g., for certain
+types of model tuning.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>agent_id<span class="classifier">int</span></dt><dd><p>The identifier for the agent’s dataset to load. If set to -1, global datasets are loaded.</p>
+</dd>
+<dt>include_val_in_train<span class="classifier">bool, optional</span></dt><dd><p>Determines whether validation data is included in the training dataset. Default is False.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing the training dataset, validation dataset, test dataset, column names of the training features,
+a tensor of test features, and the total exposure calculated from the training (and optionally validation) dataset.</p>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">,</span> <span class="n">column_names</span><span class="p">,</span> <span class="n">test_features</span><span class="p">,</span> <span class="n">exposure</span> <span class="o">=</span> <span class="n">load_individual_data</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training dataset size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.load_individual_skorch_data">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">load_individual_skorch_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.load_individual_skorch_data" title="Permalink to this definition"></a></dt>
+<dd><p>Loads training, validation, and test datasets for a specified agent or for global model training.</p>
+<p>This function reads the datasets from CSV files. If <cite>agent_id</cite> is -1, it loads the global datasets.
+Otherwise, it loads the agent-specific datasets based on the provided <cite>agent_id</cite>.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>agent_id<span class="classifier">int</span></dt><dd><p>The identifier for the specific agent’s dataset to load. If set to -1, the function loads the
+global training, validation, and test datasets.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple</dt><dd><p>A tuple containing the training features (X_train_sc), training labels (y_tr), validation features
+(X_val_sc), validation labels (y_vl), test features (X_test_sc), test labels (y_te), column names
+of the training features (X_column_names), and the total exposure from the training set (exposure).</p>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">column_names</span><span class="p">,</span> <span class="n">exposure</span> <span class="o">=</span> <span class="n">load_individual_skorch_data</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training data shape: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.load_model">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">load_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">39</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.load_model" title="Permalink to this definition"></a></dt>
+<dd><p>Load a pre-trained neural network model for a specific agent.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>agent<span class="classifier">int </span></dt><dd><p>The ID of the agent whose model to load. Default is -1.</p>
+</dd>
+<dt>num_features<span class="classifier">int </span></dt><dd><p>The number of input features for the model. Default is NUM_FEATURES.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>loaded_agent_model<span class="classifier">NeuralNetRegressor </span></dt><dd><p>The loaded neural network model for the specified agent.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.lorenz_curve">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">lorenz_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.lorenz_curve" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the Lorenz curve for given true values, predicted values, and exposures.</p>
+<p>The Lorenz curve is a graphical representation of the distribution of income or wealth. In this context,
+it is used to show the distribution of claims or losses in insurance, ordered by predicted risk. This function
+calculates the cumulative percentage of claims and exposures, sorted by the predicted risk.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>y_true<span class="classifier">array_like</span></dt><dd><p>The true values of the claims or losses.</p>
+</dd>
+<dt>y_pred<span class="classifier">array_like</span></dt><dd><p>The predicted risk scores associated with each claim or loss.</p>
+</dd>
+<dt>exposure<span class="classifier">array_like</span></dt><dd><p>The exposure values associated with each observation.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple of numpy.ndarray</dt><dd><p>A tuple containing two arrays: the cumulative percentage of exposure and the cumulative percentage of claims,
+both sorted by the predicted risk.</p>
+</dd>
+</dl>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exposure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cumulated_exposure</span><span class="p">,</span> <span class="n">cumulated_claims</span> <span class="o">=</span> <span class="n">lorenz_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cumulated_exposure</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cumulated_claims</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.one_way_graph_comparison">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">one_way_graph_comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_test_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agents_to_graph_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NUM_AGENTS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.one_way_graph_comparison" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a one-way graph comparison of actual vs. predicted frequencies by agents.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>factor<span class="classifier">str</span></dt><dd><p>The factor for binning.</p>
+</dd>
+<dt>df_test_pred<span class="classifier">pandas.DataFrame</span></dt><dd><p>The DataFrame with test predictions.</p>
+</dd>
+<dt>agents_to_graph_list<span class="classifier">list</span></dt><dd><p>List of agent indices to include in the graph.</p>
+</dd>
+<dt>NUM_AGENTS<span class="classifier">int </span></dt><dd><p>The total number of agents.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Returns:
+None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.preprocess_dataframe">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">preprocess_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.preprocess_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Applies preprocessing steps to the dataframe, including shuffling, data type transformations,
+and value capping based on specified criteria.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df<span class="classifier">DataFrame </span></dt><dd><p>The pandas DataFrame to preprocess.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>DataFrame</dt><dd><p>The preprocessed DataFrame.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Usage:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">df_preprocessed</span> <span class="pre">=</span> <span class="pre">preprocess_dataframe(df)</span>
+<span class="pre">`</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.row_check">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">row_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.row_check" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the integrity of the dataset across multiple agents by checking the total number of rows, 
+the sum of exposure values, and the sum of claims across training, validation, and test datasets.</p>
+<p>This function ensures that the combined dataset from multiple agents, along with the test dataset,
+matches expected values for total row count, total exposure, and total claims. These checks are critical for
+verifying data integrity and consistency before proceeding with further data analysis or model training.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>agents<span class="classifier">int, optional</span></dt><dd><p>The number of agents (or partitions) for which training and validation datasets are available.
+Defaults to 10.</p>
+</dd>
+</dl>
+</dd>
+<dt>Raises:</dt><dd><dl class="simple">
+<dt>AssertionError</dt><dd><p>If the total number of rows, total exposure, or total claims do not match expected values, 
+an AssertionError is raised indicating which specific integrity check has failed.</p>
+</dd>
+</dl>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>Assumes existence of CSV files in ‘../data/’ following specific naming conventions.</p></li>
+<li><p>Useful for data preprocessing in machine learning workflows involving multiple sources or agents.</p></li>
+<li><p>‘Exposure’ and ‘0’ are assumed to be column names in the respective CSV files for exposure and claims.</p></li>
+</ul>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_check</span><span class="p">(</span><span class="n">agents</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go"># Checks datasets for 5 agents, along with the test dataset, and prints the status of each check.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.seed_torch">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">seed_torch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.seed_torch" title="Permalink to this definition"></a></dt>
+<dd><p>Seeds the random number generators of PyTorch, NumPy, and Python’s <cite>random</cite> module to ensure
+reproducibility of results across runs when using PyTorch for deep learning experiments.</p>
+<p>This function sets the seed for PyTorch (both CPU and CUDA), NumPy, and the Python <cite>random</cite> module,
+enabling CuDNN benchmarking and deterministic algorithms. It is crucial for experiments requiring
+reproducibility, like model performance comparisons. Note that enabling CuDNN benchmarking and
+deterministic operations may impact performance and limit certain optimizations.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>seed<span class="classifier">int, optional</span></dt><dd><p>The seed value to use for all random number generators. The default value is <cite>SEED</cite>, which
+should be defined beforehand.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>None</dt><dd><p>This function does not return a value but sets the random seed for various libraries.</p>
+</dd>
+</dl>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>When using multiple GPUs, <cite>th.cuda.manual_seed_all(seed)</cite> ensures all GPUs are seeded,</p></li>
+</ul>
+<p>crucial for reproducibility in multi-GPU setups.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SEED</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_torch</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.split_data">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">split_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_encoded</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.split_data" title="Permalink to this definition"></a></dt>
+<dd><p>Splits the encoded DataFrame into training, validation, and test sets.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>df_encoded<span class="classifier">DataFrame </span></dt><dd><p>The encoded DataFrame from which to split the data.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple</dt><dd><p>Contains training, validation, and test sets (X_train, X_val, X_test, y_train, y_val, y_test).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Usage:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">X_train,</span> <span class="pre">X_val,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_val,</span> <span class="pre">y_test</span> <span class="pre">=</span> <span class="pre">split_data(df_encoded)</span>
+<span class="pre">`</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.training_loss_curve">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">training_loss_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agent_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.training_loss_curve" title="Permalink to this definition"></a></dt>
+<dd><p>Plots the training and validation loss curves along with the percentage of Poisson Deviance Explained (PDE).</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>estimator<span class="classifier">object</span></dt><dd><p>The trained model or estimator that contains the training history. It is expected
+to have a ‘history’ attribute that is a NumPy array or a similar structure with
+‘train_loss’, ‘valid_loss’, and ‘weighted_PDE_best’ columns.</p>
+</dd>
+<dt>agent_id<span class="classifier">int or str</span></dt><dd><p>Identifier for the agent. Used for titling the plot and naming the saved figure file.</p>
+</dd>
+</dl>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>This function saves the generated plot as a PNG file in a directory named after the agent.</p></li>
+<li><p>Ensure the directory ‘../ag_{agent_id}/’ exists or adjust the save path accordingly.</p></li>
+<li><p>The function uses matplotlib for plotting and requires this library to be installed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.undummify">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">undummify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.undummify" title="Permalink to this definition"></a></dt>
+<dd><p>Reverse one-hot encoding (dummy variables) in a DataFrame.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>df (pandas.DataFrame): The DataFrame containing dummy variables.</p></li>
+<li><p>prefix_sep (str, optional): Separator used in column prefixes. Default is “_”.</p></li>
+</ul>
+</dd>
+<dt>Returns:</dt><dd><p>undummified_df (pandas.DataFrame): The DataFrame with one-hot encoding reversed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.uniform_partitions">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">uniform_partitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agents</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.uniform_partitions" title="Permalink to this definition"></a></dt>
+<dd><p>Splits and saves the dataset into uniform partitions for a specified number of agents.</p>
+<p>This function loads a dataset via a previously defined <cite>upload_dataset</cite> function, then partitions
+the training and validation datasets uniformly across the specified number of agents. Each partition
+is saved to CSV files, containing both features and labels for each agent’s training and validation datasets.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>agents<span class="classifier">int, optional</span></dt><dd><p>The number of agents to split the dataset into. Defaults to 10.</p>
+</dd>
+<dt>num_features<span class="classifier">int, optional</span></dt><dd><p>The number of features in the dataset. Automatically inferred if not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt>Notes:</dt><dd><ul class="simple">
+<li><p>Requires <cite>upload_dataset</cite> and <cite>seed_torch</cite> to be defined and accessible within the scope.</p></li>
+<li><p>Saves partitioned data files in the ‘../data/’ directory.</p></li>
+</ul>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">uniform_partitions</span><span class="p">(</span><span class="n">agents</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">Creates and saves 5 sets of training and validation data for 5 agents, storing them in &#39;../data/&#39;.</span>
+</pre></div>
+</div>
+</dd>
+<dt>Raises:</dt><dd><dl class="simple">
+<dt>FileNotFoundError</dt><dd><p>If the ‘../data/’ directory does not exist or cannot be accessed.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>None</dt><dd><p>The function does not return a value but saves partitioned datasets to disk.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.upload_dataset">
+<span class="sig-prename descclassname"><span class="pre">utils.</span></span><span class="sig-name descname"><span class="pre">upload_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.upload_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Uploads, preprocesses, encodes, scales, and splits the dataset into training, validation, and test sets.</p>
+<p>Assumes the existence of a global <cite>DATA_PATH</cite> variable pointing to the dataset’s location and a <cite>SEED</cite> for reproducibility.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>tuple</dt><dd><p>Contains the training, validation, and test sets, feature names, and the scaler.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>Usage:
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">X_train,</span> <span class="pre">X_val,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_val,</span> <span class="pre">y_test,</span> <span class="pre">feature_names,</span> <span class="pre">scaler</span> <span class="pre">=</span> <span class="pre">upload_dataset()</span>
+<span class="pre">`</span></code></p>
+</dd></dl>
+
+<p>#   :exclude-members: load_model,  frequency_conversion, undummify, create_test_data, create_df_test_pred, create_df_sum, one_way_graph_comparison, double_lift_rebase</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="skorch_tuning.html" class="btn btn-neutral float-left" title="skorch_tuning module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils_quantisation.html" class="btn btn-neutral float-right" title="utils_quantisation module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, IFoA FL WP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

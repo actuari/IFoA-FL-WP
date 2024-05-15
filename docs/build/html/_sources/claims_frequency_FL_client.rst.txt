@@ -1,0 +1,7 @@
+claims\_frequency\_FL\_client module
+====================================
+
+.. automodule:: claims_frequency_FL_client
+   :members:
+   :undoc-members:
+   :show-inheritance:

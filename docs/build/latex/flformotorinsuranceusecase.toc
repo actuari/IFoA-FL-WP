@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}code}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}architecture module}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}insur\_FL\_client module}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}insur\_FL\_server module}{9}{section.1.3}%
+\contentsline {section}{\numberline {1.4}insur\_maskedAgg module}{9}{section.1.4}%
+\contentsline {section}{\numberline {1.5}prepare\_dataset module}{10}{section.1.5}%
+\contentsline {section}{\numberline {1.6}skorch\_tuning module}{11}{section.1.6}%
+\contentsline {section}{\numberline {1.7}utils module}{11}{section.1.7}%
+\contentsline {section}{\numberline {1.8}utils\_quantisation module}{18}{section.1.8}%
+\contentsline {section}{\numberline {1.9}utils\_smpc module}{20}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Indices and tables}{23}{chapter.2}%
+\contentsline {chapter}{Python Module Index}{25}{section*.55}%

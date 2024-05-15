@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utils_quantisation module &mdash; FL for motor insurance use case 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils_smpc module" href="utils_smpc.html" />
+    <link rel="prev" title="utils module" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FL for motor insurance use case
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">architecture module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_client.html">insur_FL_client module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_server.html">insur_FL_server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_maskedAgg.html">insur_maskedAgg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_dataset.html">prepare_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skorch_tuning.html">skorch_tuning module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils_quantisation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utils_quantisation.add_mod"><code class="docutils literal notranslate"><span class="pre">add_mod()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils_quantisation.dequantize"><code class="docutils literal notranslate"><span class="pre">dequantize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils_quantisation.dequantize_mean"><code class="docutils literal notranslate"><span class="pre">dequantize_mean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils_quantisation.quantize"><code class="docutils literal notranslate"><span class="pre">quantize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils_smpc.html">utils_smpc module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FL for motor insurance use case</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">code</a></li>
+      <li class="breadcrumb-item active">utils_quantisation module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils_quantisation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-utils_quantisation">
+<span id="utils-quantisation-module"></span><h1>utils_quantisation module<a class="headerlink" href="#module-utils_quantisation" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_quantisation.add_mod">
+<span class="sig-prename descclassname"><span class="pre">utils_quantisation.</span></span><span class="sig-name descname"><span class="pre">add_mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils_quantisation.add_mod" title="Permalink to this definition"></a></dt>
+<dd><p>Performs modular addition on two integer numpy arrays with a predefined modulus.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>x<span class="classifier">NDArrayInt</span></dt><dd><p>The first integer numpy array.</p>
+</dd>
+<dt>y<span class="classifier">NDArrayInt</span></dt><dd><p>The second integer numpy array.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>NDArrayInt</dt><dd><p>The result of modular addition of <cite>x</cite> and <cite>y</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_quantisation.dequantize">
+<span class="sig-prename descclassname"><span class="pre">utils_quantisation.</span></span><span class="sig-name descname"><span class="pre">dequantize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantized_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipping_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ag_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils_quantisation.dequantize" title="Permalink to this definition"></a></dt>
+<dd><p>Dequantizes a list of integer numpy arrays back into float numpy arrays, adjusting for a specified clipping range.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>quantized_parameters<span class="classifier">List[NDArrayInt]</span></dt><dd><p>The list of quantized integer numpy arrays to be dequantized.</p>
+</dd>
+<dt>clipping_range<span class="classifier">float</span></dt><dd><p>The clipping range to adjust the dequantized values within.</p>
+</dd>
+<dt>target_range<span class="classifier">np.int64</span></dt><dd><p>The original target range used for quantization.</p>
+</dd>
+<dt>ag_no<span class="classifier">int</span></dt><dd><p>A factor to adjust the dequantization process, potentially representing the number of aggregating agents.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>List[NDArrayFloat]</dt><dd><p>The list of dequantized float numpy arrays.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_quantisation.dequantize_mean">
+<span class="sig-prename descclassname"><span class="pre">utils_quantisation.</span></span><span class="sig-name descname"><span class="pre">dequantize_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quantized_parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipping_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ag_no</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils_quantisation.dequantize_mean" title="Permalink to this definition"></a></dt>
+<dd><p>Dequantizes integer Numpy arrays back to float Numpy arrays with an adjusted range based on
+clipping range, target range, and the number of agents.</p>
+<p>This function reverses the quantization process applied to the original float arrays, taking into account
+the clipping range, target range, and an adjustment factor derived from the number of agents. It’s used
+to restore the approximate original float values from their quantized integer representations, applying
+an average based on the number of agents to adjust the quantization scale.</p>
+<dl>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>quantized_parameters<span class="classifier">List[NDArrayInt]</span></dt><dd><p>A list of quantized integer Numpy arrays to be dequantized.</p>
+</dd>
+<dt>clipping_range<span class="classifier">float</span></dt><dd><p>The maximum absolute value allowed in the original float arrays.</p>
+</dd>
+<dt>target_range<span class="classifier">np.int64</span></dt><dd><p>The target range used during the quantization process.</p>
+</dd>
+<dt>ag_no<span class="classifier">int</span></dt><dd><p>The number of agents involved, which affects the dequantization scale.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>List[NDArrayFloat]</dt><dd><p>A list of dequantized float Numpy arrays, with values approximately restored to
+their original scale and centered around the original clipping range.</p>
+</dd>
+</dl>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="o">-</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clipping_range</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target_range</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ag_no</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dequantized</span> <span class="o">=</span> <span class="n">dequantize_mean</span><span class="p">(</span><span class="n">quantized_parameters</span><span class="p">,</span> <span class="n">clipping_range</span><span class="p">,</span> <span class="n">target_range</span><span class="p">,</span> <span class="n">ag_no</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dequantized</span><span class="p">)</span>
+<span class="go">[array([-0.2, 0.2, -0.4], dtype=float64)]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils_quantisation.quantize">
+<span class="sig-prename descclassname"><span class="pre">utils_quantisation.</span></span><span class="sig-name descname"><span class="pre">quantize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clipping_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int64</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#utils_quantisation.quantize" title="Permalink to this definition"></a></dt>
+<dd><p>Quantizes a list of float numpy arrays into integer numpy arrays within a specified target range.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>parameters<span class="classifier">List[NDArrayFloat]</span></dt><dd><p>The list of float numpy arrays to be quantized.</p>
+</dd>
+<dt>clipping_range<span class="classifier">float</span></dt><dd><p>The range within which values are clipped before quantization.</p>
+</dd>
+<dt>target_range<span class="classifier">np.int64</span></dt><dd><p>The integer range to quantize the values into.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>List[NDArrayInt]</dt><dd><p>The list of quantized integer numpy arrays.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="utils.html" class="btn btn-neutral float-left" title="utils module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils_smpc.html" class="btn btn-neutral float-right" title="utils_smpc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, IFoA FL WP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

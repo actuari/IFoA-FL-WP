@@ -1,0 +1,7 @@
+IFoA\_server module
+===================
+
+.. automodule:: IFoA_server
+   :members:
+   :undoc-members:
+   :show-inheritance:

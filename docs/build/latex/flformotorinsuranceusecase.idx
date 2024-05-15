@@ -1,0 +1,70 @@
+\indexentry{module@\spxentry{module}!architecture@\spxentry{architecture}|hyperpage}{1}
+\indexentry{architecture@\spxentry{architecture}!module@\spxentry{module}|hyperpage}{1}
+\indexentry{MultipleRegression (class in architecture)@\spxentry{MultipleRegression}\spxextra{class in architecture}|hyperpage}{1}
+\indexentry{forward() (architecture.MultipleRegression method)@\spxentry{forward()}\spxextra{architecture.MultipleRegression method}|hyperpage}{2}
+\indexentry{predict() (architecture.MultipleRegression method)@\spxentry{predict()}\spxextra{architecture.MultipleRegression method}|hyperpage}{2}
+\indexentry{training (architecture.MultipleRegression attribute)@\spxentry{training}\spxextra{architecture.MultipleRegression attribute}|hyperpage}{2}
+\indexentry{get\_parameters() (in module architecture)@\spxentry{get\_parameters()}\spxextra{in module architecture}|hyperpage}{2}
+\indexentry{module@\spxentry{module}!insur\_FL\_client@\spxentry{insur\_FL\_client}|hyperpage}{2}
+\indexentry{insur\_FL\_client@\spxentry{insur\_FL\_client}!module@\spxentry{module}|hyperpage}{2}
+\indexentry{ClaimsFrequencyFLClient (class in insur\_FL\_client)@\spxentry{ClaimsFrequencyFLClient}\spxextra{class in insur\_FL\_client}|hyperpage}{2}
+\indexentry{evaluate() (insur\_FL\_client.ClaimsFrequencyFLClient method)@\spxentry{evaluate()}\spxextra{insur\_FL\_client.ClaimsFrequencyFLClient method}|hyperpage}{2}
+\indexentry{fit() (insur\_FL\_client.ClaimsFrequencyFLClient method)@\spxentry{fit()}\spxextra{insur\_FL\_client.ClaimsFrequencyFLClient method}|hyperpage}{3}
+\indexentry{get\_parameters() (insur\_FL\_client.ClaimsFrequencyFLClient method)@\spxentry{get\_parameters()}\spxextra{insur\_FL\_client.ClaimsFrequencyFLClient method}|hyperpage}{4}
+\indexentry{set\_parameters() (insur\_FL\_client.ClaimsFrequencyFLClient method)@\spxentry{set\_parameters()}\spxextra{insur\_FL\_client.ClaimsFrequencyFLClient method}|hyperpage}{5}
+\indexentry{initialize\_model() (in module insur\_FL\_client)@\spxentry{initialize\_model()}\spxextra{in module insur\_FL\_client}|hyperpage}{5}
+\indexentry{main() (in module insur\_FL\_client)@\spxentry{main()}\spxextra{in module insur\_FL\_client}|hyperpage}{6}
+\indexentry{parse\_args() (in module insur\_FL\_client)@\spxentry{parse\_args()}\spxextra{in module insur\_FL\_client}|hyperpage}{6}
+\indexentry{test() (in module insur\_FL\_client)@\spxentry{test()}\spxextra{in module insur\_FL\_client}|hyperpage}{7}
+\indexentry{train() (in module insur\_FL\_client)@\spxentry{train()}\spxextra{in module insur\_FL\_client}|hyperpage}{8}
+\indexentry{module@\spxentry{module}!insur\_FL\_server@\spxentry{insur\_FL\_server}|hyperpage}{9}
+\indexentry{insur\_FL\_server@\spxentry{insur\_FL\_server}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{init\_parameters() (in module insur\_FL\_server)@\spxentry{init\_parameters()}\spxextra{in module insur\_FL\_server}|hyperpage}{9}
+\indexentry{start\_FL\_server() (in module insur\_FL\_server)@\spxentry{start\_FL\_server()}\spxextra{in module insur\_FL\_server}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!insur\_maskedAgg@\spxentry{insur\_maskedAgg}|hyperpage}{9}
+\indexentry{insur\_maskedAgg@\spxentry{insur\_maskedAgg}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{LocalUpdatesStrategy (class in insur\_maskedAgg)@\spxentry{LocalUpdatesStrategy}\spxextra{class in insur\_maskedAgg}|hyperpage}{9}
+\indexentry{aggregate\_fit() (insur\_maskedAgg.LocalUpdatesStrategy method)@\spxentry{aggregate\_fit()}\spxextra{insur\_maskedAgg.LocalUpdatesStrategy method}|hyperpage}{9}
+\indexentry{aggregate\_qt() (in module insur\_maskedAgg)@\spxentry{aggregate\_qt()}\spxextra{in module insur\_maskedAgg}|hyperpage}{10}
+\indexentry{aggregate\_qt2() (in module insur\_maskedAgg)@\spxentry{aggregate\_qt2()}\spxextra{in module insur\_maskedAgg}|hyperpage}{10}
+\indexentry{aggregate\_weighted\_average() (in module insur\_maskedAgg)@\spxentry{aggregate\_weighted\_average()}\spxextra{in module insur\_maskedAgg}|hyperpage}{10}
+\indexentry{module@\spxentry{module}!prepare\_dataset@\spxentry{prepare\_dataset}|hyperpage}{10}
+\indexentry{prepare\_dataset@\spxentry{prepare\_dataset}!module@\spxentry{module}|hyperpage}{10}
+\indexentry{main() (in module prepare\_dataset)@\spxentry{main()}\spxextra{in module prepare\_dataset}|hyperpage}{10}
+\indexentry{parse\_arguments() (in module prepare\_dataset)@\spxentry{parse\_arguments()}\spxextra{in module prepare\_dataset}|hyperpage}{10}
+\indexentry{prepare\_and\_validate\_dataset() (in module prepare\_dataset)@\spxentry{prepare\_and\_validate\_dataset()}\spxextra{in module prepare\_dataset}|hyperpage}{10}
+\indexentry{module@\spxentry{module}!skorch\_tuning@\spxentry{skorch\_tuning}|hyperpage}{11}
+\indexentry{skorch\_tuning@\spxentry{skorch\_tuning}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{main() (in module skorch\_tuning)@\spxentry{main()}\spxextra{in module skorch\_tuning}|hyperpage}{11}
+\indexentry{module@\spxentry{module}!utils@\spxentry{utils}|hyperpage}{11}
+\indexentry{utils@\spxentry{utils}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{create\_df\_sum() (in module utils)@\spxentry{create\_df\_sum()}\spxextra{in module utils}|hyperpage}{11}
+\indexentry{create\_df\_test\_pred() (in module utils)@\spxentry{create\_df\_test\_pred()}\spxextra{in module utils}|hyperpage}{11}
+\indexentry{create\_test\_data() (in module utils)@\spxentry{create\_test\_data()}\spxextra{in module utils}|hyperpage}{11}
+\indexentry{double\_lift\_rebase() (in module utils)@\spxentry{double\_lift\_rebase()}\spxextra{in module utils}|hyperpage}{12}
+\indexentry{encode\_and\_scale\_dataframe() (in module utils)@\spxentry{encode\_and\_scale\_dataframe()}\spxextra{in module utils}|hyperpage}{12}
+\indexentry{frequency\_conversion() (in module utils)@\spxentry{frequency\_conversion()}\spxextra{in module utils}|hyperpage}{12}
+\indexentry{hyperparameter\_counts() (in module utils)@\spxentry{hyperparameter\_counts()}\spxextra{in module utils}|hyperpage}{13}
+\indexentry{load\_individual\_data() (in module utils)@\spxentry{load\_individual\_data()}\spxextra{in module utils}|hyperpage}{13}
+\indexentry{load\_individual\_skorch\_data() (in module utils)@\spxentry{load\_individual\_skorch\_data()}\spxextra{in module utils}|hyperpage}{14}
+\indexentry{load\_model() (in module utils)@\spxentry{load\_model()}\spxextra{in module utils}|hyperpage}{14}
+\indexentry{lorenz\_curve() (in module utils)@\spxentry{lorenz\_curve()}\spxextra{in module utils}|hyperpage}{14}
+\indexentry{one\_way\_graph\_comparison() (in module utils)@\spxentry{one\_way\_graph\_comparison()}\spxextra{in module utils}|hyperpage}{15}
+\indexentry{preprocess\_dataframe() (in module utils)@\spxentry{preprocess\_dataframe()}\spxextra{in module utils}|hyperpage}{15}
+\indexentry{row\_check() (in module utils)@\spxentry{row\_check()}\spxextra{in module utils}|hyperpage}{15}
+\indexentry{seed\_torch() (in module utils)@\spxentry{seed\_torch()}\spxextra{in module utils}|hyperpage}{16}
+\indexentry{split\_data() (in module utils)@\spxentry{split\_data()}\spxextra{in module utils}|hyperpage}{17}
+\indexentry{training\_loss\_curve() (in module utils)@\spxentry{training\_loss\_curve()}\spxextra{in module utils}|hyperpage}{17}
+\indexentry{undummify() (in module utils)@\spxentry{undummify()}\spxextra{in module utils}|hyperpage}{17}
+\indexentry{uniform\_partitions() (in module utils)@\spxentry{uniform\_partitions()}\spxextra{in module utils}|hyperpage}{17}
+\indexentry{upload\_dataset() (in module utils)@\spxentry{upload\_dataset()}\spxextra{in module utils}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!utils\_quantisation@\spxentry{utils\_quantisation}|hyperpage}{18}
+\indexentry{utils\_quantisation@\spxentry{utils\_quantisation}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{add\_mod() (in module utils\_quantisation)@\spxentry{add\_mod()}\spxextra{in module utils\_quantisation}|hyperpage}{18}
+\indexentry{dequantize() (in module utils\_quantisation)@\spxentry{dequantize()}\spxextra{in module utils\_quantisation}|hyperpage}{18}
+\indexentry{dequantize\_mean() (in module utils\_quantisation)@\spxentry{dequantize\_mean()}\spxextra{in module utils\_quantisation}|hyperpage}{19}
+\indexentry{quantize() (in module utils\_quantisation)@\spxentry{quantize()}\spxextra{in module utils\_quantisation}|hyperpage}{20}
+\indexentry{module@\spxentry{module}!utils\_smpc@\spxentry{utils\_smpc}|hyperpage}{20}
+\indexentry{utils\_smpc@\spxentry{utils\_smpc}!module@\spxentry{module}|hyperpage}{20}
+\indexentry{calc\_noise() (in module utils\_smpc)@\spxentry{calc\_noise()}\spxextra{in module utils\_smpc}|hyperpage}{20}
+\indexentry{calc\_noise\_zero() (in module utils\_smpc)@\spxentry{calc\_noise\_zero()}\spxextra{in module utils\_smpc}|hyperpage}{20}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>architecture module &mdash; FL for motor insurance use case 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=359c27e9"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="insur_FL_client module" href="insur_FL_client.html" />
+    <link rel="prev" title="code" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            FL for motor insurance use case
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">code</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">architecture module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#architecture.MultipleRegression"><code class="docutils literal notranslate"><span class="pre">MultipleRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#architecture.MultipleRegression.forward"><code class="docutils literal notranslate"><span class="pre">MultipleRegression.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture.MultipleRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleRegression.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture.MultipleRegression.training"><code class="docutils literal notranslate"><span class="pre">MultipleRegression.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture.get_parameters"><code class="docutils literal notranslate"><span class="pre">get_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_client.html">insur_FL_client module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_FL_server.html">insur_FL_server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="insur_maskedAgg.html">insur_maskedAgg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prepare_dataset.html">prepare_dataset module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="run_config.html">run_config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skorch_tuning.html">skorch_tuning module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_quantisation.html">utils_quantisation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils_smpc.html">utils_smpc module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FL for motor insurance use case</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">code</a></li>
+      <li class="breadcrumb-item active">architecture module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-architecture">
+<span id="architecture-module"></span><h1>architecture module<a class="headerlink" href="#module-architecture" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="architecture.MultipleRegression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">architecture.</span></span><span class="sig-name descname"><span class="pre">MultipleRegression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features=39</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_units_1=25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_units_2=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.Tanh'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout_rate=0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#architecture.MultipleRegression" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A neural network model for multiple regression with two hidden layers.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>layer_1<span class="classifier">nn.Linear</span></dt><dd><p>The first linear layer.</p>
+</dd>
+<dt>layer_2<span class="classifier">nn.Linear </span></dt><dd><p>The second linear layer.</p>
+</dd>
+<dt>layer_out<span class="classifier">nn.Linear </span></dt><dd><p>The output layer.</p>
+</dd>
+<dt>dropout<span class="classifier">nn.Dropout </span></dt><dd><p>Dropout layer for regularization.</p>
+</dd>
+<dt>act<span class="classifier">activation</span></dt><dd><p>The activation function.</p>
+</dd>
+</dl>
+</dd>
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>num_features<span class="classifier">int</span></dt><dd><p>Number of input features. Default is 39.</p>
+</dd>
+<dt>num_units_1<span class="classifier">int </span></dt><dd><p>Number of units in the first hidden layer. Default is 25.</p>
+</dd>
+<dt>num_units_2<span class="classifier">int</span></dt><dd><p>Number of units in the second hidden layer. Default is 2.</p>
+</dd>
+<dt>activation<span class="classifier">callable </span></dt><dd><p>Activation function to use. Default is nn.Tanh.</p>
+</dd>
+<dt>dropout_rate<span class="classifier">float</span></dt><dd><p>Dropout rate. Default is 0.</p>
+</dd>
+</dl>
+</dd>
+<dt>Methods:</dt><dd><dl class="simple">
+<dt>forward(inputs) </dt><dd><p>Performs a forward pass through the model.</p>
+</dd>
+<dt>predict(test_inputs)</dt><dd><p>Predicts outputs for the given inputs.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="architecture.MultipleRegression.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#architecture.MultipleRegression.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Performs a forward pass through the model.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>inputs (Tensor): Input tensor.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Tensor: The model’s output tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="architecture.MultipleRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#architecture.MultipleRegression.predict" title="Permalink to this definition"></a></dt>
+<dd><p>Predicts outputs for the given inputs without applying dropout.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>test_inputs (Tensor): Input tensor for prediction.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Tensor: The predicted output tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="architecture.MultipleRegression.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#architecture.MultipleRegression.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="architecture.get_parameters">
+<span class="sig-prename descclassname"><span class="pre">architecture.</span></span><span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#architecture.get_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the parameters of the given model as a list of numpy arrays.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>model (nn.Module): The model from which to retrieve parameters.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[np.ndarray]: A list containing the model’s parameters as numpy arrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="insur_FL_client.html" class="btn btn-neutral float-right" title="insur_FL_client module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, IFoA FL WP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
